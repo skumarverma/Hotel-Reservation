@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Reservation System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-hotel"></i> Hotel Management System</h1>
+            <p>Manage your hotel reservations efficiently</p>
+        </header>
+
+        <nav class="navigation">
+            <button class="nav-btn active" data-section="reserve">
+                <i class="fas fa-plus-circle"></i> Reserve Room
+            </button>
+            <button class="nav-btn" data-section="view">
+                <i class="fas fa-list"></i> View Reservations
+            </button>
+            <button class="nav-btn" data-section="search">
+                <i class="fas fa-search"></i> Find Room
+            </button>
+            <button class="nav-btn" data-section="update">
+                <i class="fas fa-edit"></i> Update Reservation
+            </button>
+            <button class="nav-btn" data-section="delete">
+                <i class="fas fa-trash"></i> Delete Reservation
+            </button>
+        </nav>
+
+        <main class="main-content">
+            <!-- Reserve Room Section -->
+            <section id="reserve" class="section active">
+                <div class="card">
+                    <h2><i class="fas fa-bed"></i> Reserve a Room</h2>
+                    <form id="reserveForm" class="form">
+                        <div class="form-group">
+                            <label for="guestName">Guest Name</label>
+                            <input type="text" id="guestName" name="guestName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomNumber">Room Number</label>
+                            <input type="number" id="roomNumber" name="roomNumber" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactNumber">Contact Number</label>
+                            <input type="tel" id="contactNumber" name="contactNumber" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Reserve Room
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- View Reservations Section -->
+            <section id="view" class="section">
+                <div class="card">
+                    <h2><i class="fas fa-table"></i> Current Reservations</h2>
+                    <button id="refreshBtn" class="btn btn-secondary">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                    <div class="table-container">
+                        <table id="reservationsTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Reservation ID</th>
+                                    <th>Guest Name</th>
+                                    <th>Room Number</th>
+                                    <th>Contact Number</th>
+                                    <th>Reservation Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reservationsBody">
+                                <!-- Data will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Search Room Section -->
+            <section id="search" class="section">
+                <div class="card">
+                    <h2><i class="fas fa-user-search"></i> Find Room by Guest</h2>
+                    <form id="searchForm" class="form">
+                        <div class="form-group">
+                            <label for="searchGuestName">Guest Name</label>
+                            <input type="text" id="searchGuestName" name="searchGuestName" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </form>
+                    <div id="searchResult" class="result-container"></div>
+                </div>
+            </section>
+
+            <!-- Update Reservation Section -->
+            <section id="update" class="section">
+                <div class="card">
+                    <h2><i class="fas fa-edit"></i> Update Reservation</h2>
+                    <form id="updateForm" class="form">
+                        <div class="form-group">
+                            <label for="updateReservationId">Reservation ID</label>
+                            <input type="number" id="updateReservationId" name="updateReservationId" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="updateGuestName">New Guest Name</label>
+                            <input type="text" id="updateGuestName" name="updateGuestName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="updateRoomNumber">New Room Number</label>
+                            <input type="number" id="updateRoomNumber" name="updateRoomNumber" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="updateContactNumber">New Contact Number</label>
+                            <input type="tel" id="updateContactNumber" name="updateContactNumber" required>
+                        </div>
+                        <button type="submit" class="btn btn-warning">
+                            <i class="fas fa-save"></i> Update Reservation
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Delete Reservation Section -->
+            <section id="delete" class="section">
+                <div class="card">
+                    <h2><i class="fas fa-trash-alt"></i> Delete Reservation</h2>
+                    <form id="deleteForm" class="form">
+                        <div class="form-group">
+                            <label for="deleteReservationId">Reservation ID</label>
+                            <input type="number" id="deleteReservationId" name="deleteReservationId" min="1" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Delete Reservation
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <!-- Success/Error Messages -->
+        <div id="messageContainer" class="message-container"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
